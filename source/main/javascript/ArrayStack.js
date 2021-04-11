@@ -134,7 +134,7 @@ class StandardArrayStack
     peek()
     {
         if (this.isEmpty)
-            throw new EmptyArrayStack();
+            throw new EmptyStackError();
 
         return this.items[this.size - 1];
     }
