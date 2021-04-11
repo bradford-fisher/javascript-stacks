@@ -14,6 +14,11 @@ class ArrayStack
         return instances.get(this).capacity;
     }
 
+    get isEmpty()
+    {
+        return instances.get(this).isEmpty;
+    }
+
     get size()
     {
         return instances.get(this).size;
@@ -62,6 +67,11 @@ class EmptyArrayStack
         return MINIMUM_CAPACITY;
     }
 
+    get isEmpty()
+    {
+        return true;
+    }
+
     get size()
     {
         return MINIMUM_CAPACITY;
@@ -86,6 +96,11 @@ class StandardArrayStack
         this.items = [];
     }
 
+    get isEmpty()
+    {
+        return this.size === MINIMUM_CAPACITY;
+    }
+
     get size()
     {
         return this.items.length;
@@ -93,7 +108,7 @@ class StandardArrayStack
 
     pop()
     {
-        if (this.size === MINIMUM_CAPACITY)
+        if (this.isEmpty)
             throw new EmptyStackError();
 
         return this.items.pop();
