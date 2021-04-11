@@ -15,6 +15,7 @@ suite("ArrayStack :: Creation", function()
         assert.strictEqual(stack.capacity, ArrayStack.MAXIMUM_CAPACITY);
         assert.strictEqual(stack.size, 0);
         assert.strictEqual(stack.isEmpty, true);
+        assert.strictEqual(stack.isFull, false);
     });
 
     test("can be created with positive capacity", function()
@@ -25,6 +26,7 @@ suite("ArrayStack :: Creation", function()
         assert.strictEqual(stack.capacity, 7);
         assert.strictEqual(stack.size, 0);
         assert.strictEqual(stack.isEmpty, true);
+        assert.strictEqual(stack.isFull, false);
     });
 
     test("can be created with zero capacity", function()
@@ -35,6 +37,7 @@ suite("ArrayStack :: Creation", function()
         assert.strictEqual(stack.capacity, 0);
         assert.strictEqual(stack.size, 0);
         assert.strictEqual(stack.isEmpty, true);
+        assert.strictEqual(stack.isFull, true);
     });
 
     test("cannot be created with undefined capacity", function()
@@ -100,6 +103,7 @@ suite("ArrayStack", function()
 
         stack.pop();
 
+        assert.strictEqual(stack.isFull, false);
         assert.strictEqual(stack.size, initialSize - 1);
     });
 
@@ -115,6 +119,7 @@ suite("ArrayStack", function()
         stack.push("b");
         stack.push("c");
 
+        assert.strictEqual(stack.isFull, true);
         assert.throws(() => stack.push("d"));
     });
 
@@ -143,6 +148,7 @@ suite("ArrayStack :: Zero Capacity", function()
 
     test("cannot push", function()
     {
+        assert.strictEqual(stack.isFull, true);
         assert.throws(() => stack.push("a"));
     });
 

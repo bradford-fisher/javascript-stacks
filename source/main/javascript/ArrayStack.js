@@ -19,6 +19,11 @@ class ArrayStack
         return instances.get(this).isEmpty;
     }
 
+    get isFull()
+    {
+        return instances.get(this).isFull;
+    }
+
     get size()
     {
         return instances.get(this).size;
@@ -72,6 +77,11 @@ class EmptyArrayStack
         return true;
     }
 
+    get isFull()
+    {
+        return true;
+    }
+
     get size()
     {
         return MINIMUM_CAPACITY;
@@ -101,6 +111,11 @@ class StandardArrayStack
         return this.size === MINIMUM_CAPACITY;
     }
 
+    get isFull()
+    {
+        return this.size === this.capacity;
+    }
+
     get size()
     {
         return this.items.length;
@@ -116,7 +131,7 @@ class StandardArrayStack
 
     push(item)
     {
-        if (this.size === this.capacity)
+        if (this.isFull)
             throw new FullStackError();
         if (item === undefined)
             throw new UndefinedItemError();
