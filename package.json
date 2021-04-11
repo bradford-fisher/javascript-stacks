@@ -19,5 +19,9 @@
     },
     "bugs": {
         "url": "https://github.com/bradford-fisher/javascript-stacks/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/bradford-fisher/javascript-stacks.git"
     }
 }
