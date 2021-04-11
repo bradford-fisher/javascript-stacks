@@ -107,6 +107,17 @@ suite("ArrayStack", function()
         assert.strictEqual(stack.size, initialSize - 1);
     });
 
+    test("does not change size with each peek", function()
+    {
+        stack.push("a");
+        stack.push("b");
+        const initialSize = stack.size;
+
+        assert.strictEqual(stack.peek(), "b");
+        assert.strictEqual(stack.peek(), "b");
+        assert.strictEqual(stack.size, initialSize);
+    });
+
     test("cannot push undefined", function()
     {
         assert.throws(() => stack.push(undefined));
@@ -135,6 +146,19 @@ suite("ArrayStack", function()
         assert.strictEqual(stack.isEmpty, true);
         assert.throws(() => stack.pop());
     });
+
+    test("cannot peek when empty", function()
+    {
+        stack.push("a");
+        stack.push("b");
+        stack.push("c");
+        stack.pop();
+        stack.pop();
+        stack.pop();
+
+        assert.strictEqual(stack.isEmpty, true);
+        assert.throws(() => stack.peek());
+    });
 });
 
 suite("ArrayStack :: Zero Capacity", function()
@@ -156,5 +180,11 @@ suite("ArrayStack :: Zero Capacity", function()
     {
         assert.strictEqual(stack.isEmpty, true);
         assert.throws(() => stack.pop());
+    });
+
+    test("cannot peek", function()
+    {
+        assert.strictEqual(stack.isEmpty, true);
+        assert.throws(() => stack.peek());
     });
 });

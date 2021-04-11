@@ -29,6 +29,11 @@ class ArrayStack
         return instances.get(this).size;
     }
 
+    peek()
+    {
+        return instances.get(this).peek();
+    }
+
     pop()
     {
         return instances.get(this).pop();
@@ -87,6 +92,11 @@ class EmptyArrayStack
         return MINIMUM_CAPACITY;
     }
 
+    peek()
+    {
+        throw new EmptyStackError();
+    }
+
     pop()
     {
         throw new EmptyStackError();
@@ -119,6 +129,14 @@ class StandardArrayStack
     get size()
     {
         return this.items.length;
+    }
+
+    peek()
+    {
+        if (this.isEmpty)
+            throw new EmptyArrayStack();
+
+        return this.items[this.size - 1];
     }
 
     pop()
