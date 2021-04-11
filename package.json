@@ -12,5 +12,9 @@
     },
     "keywords": [
         "stack"
-    ]
+    ],
+    "author": {
+        "name": "Bradford Fisher",
+        "email": "mail@bradfordfisher.com"
+    }
 }
